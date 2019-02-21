@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'Site\HomeController@index');
-Route::get('/evento/{id}/{slug}', 'Site\EventController@show')->name('site.event.show');
+Route::get('/evento/{id}/{slug}', 'Site\EventController@show')->name('site.event.event');
