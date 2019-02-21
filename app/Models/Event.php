@@ -13,18 +13,18 @@ class Event extends Model
         return $this->hasOne('App\Models\Image', 'events_id');
     }
 
-    // public function address()
-    // {
-    //     return $this->hasOne('App\Models\Address', 'events_id');
-    // }
+    public function address()
+    {
+        return $this->hasOne('App\Models\Address', 'events_id');
+    }
 
-    // public function tickets()
-    // {
-    //     return $this->hasMany('App\Models\Ticket');
-    // }
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\Ticket');
+    }
 
-    // public function sessions()
-    // {
-    //     return $this->belongsToMany('App\Models\Session');
-    // }
+    public function sessions()
+    {
+        return $this->belongsToMany('App\Models\Session');
+    }
 }
