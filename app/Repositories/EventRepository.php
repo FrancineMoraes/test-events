@@ -13,10 +13,10 @@ class EventRepository {
         return $events;
     }
 
-    // public function show($id)
-    // {
-    //     $event = Event::findOrFail($id)->with('image', 'address')->get();
+    public function show($id)
+    {
+        $event = Event::findOrFail($id);
 
-    //     return $event;
-    // }
+        return $event;
+    }
 }
