@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\EventRepository;
 
 class EventController extends Controller
 {
@@ -13,10 +14,10 @@ class EventController extends Controller
         $this->event = new EventRepository();
     }
 
-    // public function show($id)
-    // {
-    //     $events = $this->event->show($id);
+    public function show($id)
+    {
+        $event = $this->event->show($id);
 
-    //     return view('site.events.show', compact('event'));
-    // }
+        return view('site.events.event', compact('event'));
+    }
 }

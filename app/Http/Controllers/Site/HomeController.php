@@ -18,6 +18,6 @@ class HomeController extends Controller
     {
         $events = $this->event->showAll();
 
-        return view('site.layouts.app', compact('events'));
+        return view('site.index', compact('events'));
     }
 }
