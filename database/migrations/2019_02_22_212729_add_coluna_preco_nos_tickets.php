@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RenameTablePivot extends Migration
+class AddColunaPrecoNosTickets extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class RenameTablePivot extends Migration
      */
     public function up()
     {
-        Schema::rename('session_has_events', 'event_session');
+        Schema::table('tickets', function (Blueprint $table) {
+            $table->decimal('price')->after('quantity');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class RenameTablePivot extends Migration
      */
     public function down()
     {
-        Schema::rename('event_session', 'session_has_events');
+        Schema::table('tickets', function (Blueprint $table) {
+            $table->dropColumn('price');
+        });
     }
 }
