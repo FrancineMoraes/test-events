@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $fillable = ['quantity'];
-
-    public function type()
-    {
-        return $this->belongsTo('App\Models\Type');
-    }
+    protected $fillable = ['quantity', 'price', 'type'];
 
     public function event()
     {

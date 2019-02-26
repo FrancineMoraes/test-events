@@ -19,12 +19,12 @@ class Event extends Model
     }
 
     public function tickets()
-    {
-        return $this->hasMany('App\Models\Ticket');
+    {   
+        return $this->hasMany('App\Models\Ticket', 'events_id');
     }
 
     public function sessions()
     {
-        return $this->belongsToMany('App\Models\Session');
+        return $this->belongsToMany('App\Models\Session', 'session_has_events', 'events_id', 'session_id');
     }
 }
