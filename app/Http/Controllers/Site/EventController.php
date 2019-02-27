@@ -20,4 +20,18 @@ class EventController extends Controller
 
         return view('site.events.event', compact('event'));
     }
+
+    public function addCart($id)
+    {
+        $event = $this->event->addCart($id);
+
+        return view('site.events.cart', compact('event'));
+    }
+
+    public function changeQuantity(Request $request)
+    {
+        $event = $this->event->changeQuantity($request);
+
+        return view('site.events.cart-response', compact('event'))->render();
+    }
 }

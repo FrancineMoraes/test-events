@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Event;
+use App\Models\Cart;
 
 class EventRepository {
 
@@ -18,5 +19,34 @@ class EventRepository {
         $event = Event::findOrFail($id);
 
         return $event;
+    }
+
+    public function addCart($id)
+    {
+        $event = $this->show($id);
+        if($event->tickets[0] == null)
+        {
+            $event->tickets()->create([
+                'quantity' => 1,
+                'price' => 100.00,
+                'type' => 'Adulto'
+            ]);
+        
+        }
+        return $event;
+    }
+
+    public function changeQuantity($request)
+    {
+        $event = $this->show($request->event_id);
+        $new_price = 100.00*$request->quantity;
+        $event->tickets()->update([
+            'quantity' => $request->quantity,
+            'price' => $new_price,
+            'type' => 'Adulto'
+        ]);
+
+        return $event;
+
     }
 }
