@@ -8,6 +8,8 @@ class User extends Model
 {
     protected $fillable = ['name', 'cpf'];
 
+    protected $table = 'user';
+
     public function cart()
     {
         return $this->hasOne('App\Models\Cart');
