@@ -10,6 +10,7 @@
     <p>{{date("d/m/Y", strtotime($session->started))}} - Pelotas / Rio grande do sul</p>
     @endforeach
     @foreach($event->tickets as $ticket)
+        @include('site.events.cart-finished')
         <hr>
         <div class="col-md-12"><br></div>
         <p>Ticket {{$event->title}} - {{$ticket->type}} - 1º Lote</p>
@@ -28,8 +29,6 @@
 <div class="col-md-12" style="text-align:center;">
     <button type="button" class="btn btn-dark finalizar">Finalizar</button>
 </div>
-
-@include('site.layouts.modal')
 
 @endsection
 
@@ -57,13 +56,8 @@ $(document).ready(function() {
     });
 
     $( ".finalizar" ).click(function() {
-        $('.modal').modal('show');
         
-        function redirect()
-        {
-            var url = "{{route('home')}}";
-            window.location = url;
-        }
+        $('.modal').modal('show');
 
     });
 });

@@ -8,10 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Seu pedido será processado.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary button-ok" onclick="redirect(interval)">Ok</button>
+                <p>{{session('message')}}</p>
             </div>
         </div>
     </div>

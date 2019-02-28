@@ -1,6 +1,9 @@
 @extends('site.layouts.app')
 
 @section('content')
+    @if(session('message'))
+        @include('site.layouts.modal')
+    @endif
     @foreach($events as $event)
         <a style="color: inherit;text-decoration:none;" href="{{route('site.event.event', [$event->id, $slug = str_slug($event->title, '-')])}}">
             <div class="col-md-4">
@@ -15,3 +18,12 @@
         </a>
     @endforeach
 @endsection
+
+@section('script')
+
+@if(session('message'))
+<script>
+    $('.modal').modal('show');
+</script>
+@endif
+@stop
