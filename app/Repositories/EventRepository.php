@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Event;
 use App\Models\Cart;
+use App\Models\Ticket;
+use App\Models\User;
 
 class EventRepository {
 
@@ -47,6 +49,21 @@ class EventRepository {
         ]);
 
         return $event;
+
+    }
+
+    public function finished($request)
+    {
+        $ticket = Ticket::with('cart')->find($request->id);
+        $user = User::create(['name' => $request->name, 'cpf' => $request->cpf]);
+
+        $ticket->cart()->create([
+            'total' => $ticket->quantity*100,
+            'user_id' => $user->id
+        ]);
+
+        return $this->showAll();
+
 
     }
 }

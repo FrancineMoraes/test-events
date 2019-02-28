@@ -34,4 +34,18 @@ class EventController extends Controller
 
         return view('site.events.cart-response', compact('event'))->render();
     }
+
+    public function finished(Request $request)
+    {
+        $events = $this->event->finished($request);
+
+        if($events)
+        {
+            return redirect()
+            ->route('home', compact('events'))->with('message', 'Seu pedido foi efetuado com sucesso!');
+        }
+
+        return redirect()
+            ->route('home', compact('events'))->with('message', 'Seu pedido não foi efetuada, tente novamente.');
+    }
 }
