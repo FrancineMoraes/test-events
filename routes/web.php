@@ -13,5 +13,6 @@
 
 Route::get('/', 'Site\HomeController@index')->name('home');
 Route::get('/evento/{id}/{slug}', 'Site\EventController@show')->name('site.event.event');
+Route::post('/finalizar', 'Site\EventController@finished')->name('site.event.finished');
 Route::post('/carrinho/evento/{id}', 'Site\EventController@addCart')->name('site.add.cart');
 Route::post('/carrinho/alterar-quantidade/', 'Site\EventController@changeQuantity')->name('site.cart.change.quantity');
